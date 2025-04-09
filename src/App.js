@@ -4,9 +4,11 @@ function App() {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
 
+  const { REACT_APP_AZURE_API } = process.env;
+
   const ask = async () => {
     try {
-      const res = await fetch('/api/ask', {
+      const res = await fetch(`${REACT_APP_AZURE_API}/api/ask`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question }),
