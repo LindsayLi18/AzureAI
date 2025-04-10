@@ -5,7 +5,7 @@ const App = () => {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
 
-  const apiUrl = process.env.REACT_APP_AZURE_API;
+  // const apiUrl = process.env.REACT_APP_AZURE_API;
 
   const ask = async () => {
     try {
