@@ -7,7 +7,7 @@ const App = () => {
 
   const ask = async () => {
     try {
-      const res = await fetch('/api/ask', {
+      const res = await fetch('https://azure-app-001-amc0a6csfvg6chg6.australiaeast-01.azurewebsites.net/api/ask', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question }),
