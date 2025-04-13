@@ -1,26 +1,38 @@
 import { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import styles from '../styles/App.module.css';
 
-const PdfPopup = (pdfUrl) => {
+const PdfPopup = ({ pdfUrl }) => {
   const [show, setShow] = useState(false);
 
   return (
     <>
-      <Button variant="primary" onClick={() => setShow(true)} style={{marginLeft: '2rem'}}>
+      <Button 
+        variant="success" 
+        onClick={() => setShow(true)} 
+        className={styles.pdfButton}
+      >
         View Vector Database Content
       </Button>
 
-      <Modal show={show} onHide={() => setShow(false)} size="xl">
+      <Modal 
+        show={show} 
+        onHide={() => setShow(false)} 
+        size="xl"
+        centered
+        dialogClassName="pdf-modal"
+      >
         <Modal.Header closeButton>
-          <Modal.Title>PDF Viewer</Modal.Title>
+          <Modal.Title>Vector Database Content</Modal.Title>
         </Modal.Header>
-        <Modal.Body style={{ height: '80vh' }}>
+        <Modal.Body style={{ height: '80vh', padding: 0 }}>
           <iframe
-            src='/China-Tourism-Industry-Action-Plan.pdf'
+            src={pdfUrl}
             title="PDF"
             width="100%"
             height="100%"
             style={{ border: 'none' }}
+            allowFullScreen
           />
         </Modal.Body>
         <Modal.Footer>

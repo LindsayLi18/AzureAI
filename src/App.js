@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import PdfPopup from './components/PdfPopup';
+import styles from './styles/App.module.css';
 
 const App = () => {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
-
-  // const apiUrl = process.env.REACT_APP_AZURE_API;
 
   const ask = async () => {
     try {
@@ -23,29 +22,40 @@ const App = () => {
   };
 
   return (
-    <>
-        <div style={{ padding: '2rem', fontFamily: 'Arial, sans-serif' }}>
-        <h3>Ask a Question about the content related to Vector DB</h3>
-        <input
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>Vector Database Assistant</h1>
+        <p className={styles.subtitle}>Ask questions about the content in our vector database</p>
+      </header>
+
+      <div className={styles.questionSection}>
+        <div className={styles.inputGroup}>
+          <input
             type="text"
             placeholder="Enter your question..."
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
-            style={{ width: '60%', padding: '0.5rem', fontSize: '1rem' }}
-        />
-        <button
+            className={styles.input}
+          />
+          <button
             onClick={ask}
-            style={{ marginLeft: '1rem', padding: '0.5rem 1rem', fontSize: '1rem' }}
-        >
-            Send
-        </button>
-        <pre style={{ marginTop: '1rem', whiteSpace: 'pre-wrap' }}>{answer}</pre>
+            className={styles.button}
+          >
+            Ask Question
+          </button>
         </div>
+      </div>
 
-        <PdfPopup pdfUrl="./China-Tourism-Industry-Action-Plan.pdf" />
-    </>
+      {answer && (
+        <div className={styles.answerSection}>
+          <h2>Answer</h2>
+          <div className={styles.answer}>{answer}</div>
+        </div>
+      )}
+
+      <PdfPopup pdfUrl="./China-Tourism-Industry-Action-Plan.pdf" />
+    </div>
   );
 }
 
 export default App;
-
