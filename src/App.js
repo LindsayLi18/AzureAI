@@ -46,6 +46,7 @@ const App = () => {
         </div>
       </div>
 
+
       {answer && (
         <div className={styles.answerSection}>
           <h2>Answer</h2>
